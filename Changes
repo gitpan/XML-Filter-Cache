@@ -1,3 +1,8 @@
+XML::Filter::Cache Changes
+
+0.02
+    - Oops, forgot docs :-)
+    - Added auto-Key use from SystemId
 
 0.01
     - Initial release

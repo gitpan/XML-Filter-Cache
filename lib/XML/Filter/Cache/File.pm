@@ -1,10 +1,10 @@
-# $Id: File.pm,v 1.1.1.1 2002/01/28 14:42:37 matt Exp $
+# $Id: File.pm,v 1.2 2002/01/28 15:17:27 matt Exp $
 
 package XML::Filter::Cache::File;
 use strict;
 
 use vars qw($VERSION @ISA);
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 use XML::Filter::Cache ();
 @ISA = qw(XML::Filter::Cache);
@@ -103,7 +103,25 @@ XML::Filter::Cache::File - Filesystem based caching implementation
 
 =head1 DESCRIPTION
 
-...
+This default cache plugin module uses a file on the filesystem to store
+the cached events. It simply does an MD5 hash of the Key (either passed
+in or created from the SystemId), and stores that under CacheRoot. It
+also uses a two-part directory system to speed things up under ext2fs.
+
+=head1 PARAMETERS
+
+=over 4
+
+=item CacheRoot
+
+Pass this in to XML::Filter::Cache->new() to change the default cache
+directory from File::Spec->tmpdir to something different.
+
+=item Key
+
+This specifies a unique key to use in constructing the cache.
+
+=back
 
 =head1 SEE ALSO
 
