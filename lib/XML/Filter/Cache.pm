@@ -1,11 +1,11 @@
-# $Id: Cache.pm,v 1.2 2002/01/28 15:17:27 matt Exp $
+# $Id: Cache.pm,v 1.3 2002/01/30 12:33:21 matt Exp $
 
 package XML::Filter::Cache;
 use strict;
 
 use vars qw($VERSION $AUTOLOAD @ISA);
 
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 use XML::SAX::Base;
 @ISA = qw(XML::SAX::Base);
@@ -114,7 +114,7 @@ sub start_document {
     local $self->{Key} = $self->{Key} || $self->{_locator}{SystemId} || die "No cache Key supplied";
     $self->open("w");
     if (my $locator = delete $self->{_locator}) {
-        $self->record(set_document_locator => $locator);
+        $self->record(set_document_locator => { %$locator });
     }
     $self->record(start_document => $doc);
     $self->SUPER::start_document($doc);
